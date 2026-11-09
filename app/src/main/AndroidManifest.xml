@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+
+    <!-- 주소로 위치 찾기 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 방문지 도착 판단 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 내비가 화면을 덮어도 위치를 받기 위한 방문 진행 서비스 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- Vehicle SDK: Odometer, Gear -->
+    <uses-permission android:name="pleos.car.permission.CAR_DRIVE" />
+    <!-- Vehicle SDK: Door -->
+    <uses-permission android:name="pleos.car.permission.CAR_DOORS" />
+    <!-- Vehicle SDK: CarInfo (VIN) -->
+    <uses-permission android:name="pleos.car.permission.CAR_INFO" />
+    <!-- NaviHelper: 경로·경유지 정보 조회 / 경로·경유지 변경 -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE_SEARCH" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
+        </activity>
+        <service
+            android:name=".TripService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+    </application>
+</manifest>
