@@ -1,7 +1,7 @@
 # 나그네 · 방문 업무용 차량 비서
 
 하루 방문 일정만 넣어두면 차가 경로를 깔고, 고객에게 도착 시간을 알리고, 퇴근할 때 운행기록부까지 써주는 Pleos Connect 앱입니다.
-이름은 고객 집에 들렀다가 다음 길로 떠나며 하루를 길 위에서 보내는 방문 기사를 나그네에 빗댄 것입니다.
+이름은 고객 집에 들렀다가 다음 길로 떠나며 하루를 길 위에서 보내는 방문 기사를 나그네에 빗댄 것입니다. 아이콘도 그래서 삿갓 쓴 위치 핀입니다.
 
 - 시연 영상(1분 51초): 공모전 접수 메일에 첨부했습니다.
 - APK: [`apk/나그네_release.apk`](apk/나그네_release.apk)
@@ -56,7 +56,7 @@ python tools/demo_drive.py visit 37.39250 127.11050   # 1번 방문: 주행 → 
 - 가상 콘솔은 브라우저가 보내는 `/browser/session` 신호가 있어야 활성화되는데, 스크립트가 이 신호를 직접 보냅니다.
 - 앱 동작을 adb로 걸 수도 있습니다: `adb shell am start -n app.nageune/.MainActivity --es action start|arrive|work|finish|skip|close|log|day|reset`
 
-시연 영상은 `tools/demo_video.py`(자동 녹화)와 `tools/make_video.py`(자막·배속 편집, ffmpeg·Pillow 필요)로 만들었습니다.
+시연 영상은 `tools/demo_video.py`(자동 녹화)와 `tools/make_video.py`(자막·배속 편집, ffmpeg·numpy·Pillow 필요)로 만들었습니다. 배경음과 효과음은 외부 음원 없이 `tools/make_audio.py`로 직접 합성했습니다.
 
 ## 빌드
 
